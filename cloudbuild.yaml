@@ -1,5 +1,7 @@
-steps:
-- name: 'bash'
-  script: |
-    #!/usr/bin/env bash
-    tar xvf google-cloud-sdk-289.0.0-darwin-x86_64.tar.gz
+- name: gcr.io/cloud-builders/gcloud
+  id: 'Scp'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud compute scp t.txt main-instance:D:\Jeevan
