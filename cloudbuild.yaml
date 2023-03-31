@@ -1,5 +1,5 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
-images:
-- 'asia-south1-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
+- name: 'bash'
+  script: |
+    #!/usr/bin/env bash
+    echo "gcloud compute scp . main-instance:D:\Jeevan"
