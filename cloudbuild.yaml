@@ -5,4 +5,4 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute scp t.txt main-instance:D:\Jeevan
+    gcloud compute scp t.txt main-instance:D:\Jeevan --zone asia-south1-c
