@@ -14,5 +14,5 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute snapshots create snapshot-1 --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+    gcloud compute snapshots create snapshot-2 --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
 
