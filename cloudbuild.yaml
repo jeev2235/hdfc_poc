@@ -14,5 +14,8 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute snapshots create snapshot-2 --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+    substitutions:
+    snap-name: snap-(1 + RANDOM % 10)
+    gcloud compute snapshots create ${_snap-name} --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+
 
