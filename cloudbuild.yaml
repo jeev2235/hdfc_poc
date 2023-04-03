@@ -25,4 +25,11 @@ steps:
   - |
     gcloud compute snapshots create snapshot-disk --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
 
-
+    steps:
+- name: gcr.io/cloud-builders/gcloud
+  id: 'Scp'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud compute instance-groups managed rolling-action replace ig-main --max-surge=2 --max-unavailable=2 --replacement-method='substitute' --zone=asia-south1-c
