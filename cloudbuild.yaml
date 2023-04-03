@@ -1,17 +1,18 @@
 steps:
-- name: gcr.io/cloud-builders/gcloud1
+- name: gcr.io/cloud-builders/gcloud
   id: 'Scp'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
+     gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
 
-steps:
-- name: gcr.io/cloud-builders/gcloud1
+steps1:
+- name: gcr.io/cloud-builders/gcloud
   id: 'Scp'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    gcloud compute snapshots create $BUILD_ID --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+     gcloud compute snapshots create snapshot-1 --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south
+
