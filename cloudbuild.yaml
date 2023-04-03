@@ -14,6 +14,4 @@ steps:
   args:
   - '-c'
   - |
-    substitutions:
-      snap-name: echo $MY_RANDOM_NUMBER
-    gcloud compute snapshots create ${snap-name} --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+    gcloud compute snapshots create $MY_RANDOM_NUMBER --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
