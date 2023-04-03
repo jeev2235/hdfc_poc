@@ -7,7 +7,7 @@ steps:
   - |
     gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
 
-steps:
+steps1:
 - name: gcr.io/cloud-builders/gcloud
   id: 'Scp'
   entrypoint: 'bash'
@@ -16,6 +16,30 @@ steps:
   - |
     substitutions:
     snap-name: snap-(1 + RANDOM % 10)
-    gcloud compute snapshots create ${_snap-name} --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+[200~steps:
+  - name: gcr.io/cloud-builders/gcloud
+     id: 'Scp'
+        entrypoint: 'bash'
+           args:
+              - '-c'
+                 - |
+                      gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
+                     
+                     
+                     
+           steps:
+            
+             - name: Generate random name
+                shell: "echo $(shuf -n 1 /usr/share/dict/words)$(shuf -n 1 /usr/share/dict/words)$(shuf -n 1 /usr/share/dict/words) | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
+                   register: name_output
+                    
+                    
+             - name: gcr.io/cloud-builders/gcloud
+                id: 'Scp'
+                   entrypoint: 'bash'
+                      args:
+                         - '-c'
+                            - |
+                                 gcloud compute snapshots create "echo snapshot-test-{{ name_output.stdout }}" --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1 gcloud compute snapshots create ${_snap-name} --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
 
 
