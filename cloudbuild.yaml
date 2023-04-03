@@ -17,7 +17,5 @@ steps:
     gcloud compute snapshots create ${_snap_name} --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
   substitutions:
     _snap_name: 'snap-${BUILD_ID}'
-  options:
-    dynamic_substitutions: true
 
 
