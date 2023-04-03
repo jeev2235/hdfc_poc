@@ -1,5 +1,5 @@
 steps:
-- name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gcloud1
   id: 'Scp'
   entrypoint: 'bash'
   args:
@@ -8,7 +8,7 @@ steps:
     gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
 
 steps:
-- name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gcloud1
   id: 'Scp'
   entrypoint: 'bash'
   args:
