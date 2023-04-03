@@ -16,4 +16,13 @@ steps:
   - |
     gcloud compute snapshots delete snapshot-disk
 
+steps:
+- name: gcr.io/cloud-builders/gcloud
+  id: 'Scp'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud compute snapshots create snapshot-disk --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+
 
