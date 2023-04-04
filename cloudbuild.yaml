@@ -1,5 +1,21 @@
 steps:
 - name: gcr.io/cloud-builders/gcloud
+  id: 'delete'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud compute snapshots delete snapshot-disk-old
+
+- name: gcr.io/cloud-builders/gcloud
+  id: 'create'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud compute snapshots create snapshot-disk-old --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+
+- name: gcr.io/cloud-builders/gcloud
   id: 'copy'
   entrypoint: 'bash'
   args:
@@ -13,7 +29,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute snapshots delete snapshot-disk
+    gcloud compute snapshots delete snapshot-disk-old
 
 - name: gcr.io/cloud-builders/gcloud
   id: 'create'
@@ -21,7 +37,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute snapshots create snapshot-disk --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+    gcloud compute snapshots create snapshot-disk-old --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
 
 - name: gcr.io/cloud-builders/gcloud
   id: 'replace'
