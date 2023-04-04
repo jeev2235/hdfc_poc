@@ -29,7 +29,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute snapshots delete snapshot-disk-old
+    gcloud compute snapshots delete snapshot-disk
 
 - name: gcr.io/cloud-builders/gcloud
   id: 'create1'
@@ -37,7 +37,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute snapshots create snapshot-disk-old --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
+    gcloud compute snapshots create snapshot-disk --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
 
 - name: gcr.io/cloud-builders/gcloud
   id: 'replace'
