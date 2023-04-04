@@ -24,7 +24,7 @@ steps:
      gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
 
 - name: gcr.io/cloud-builders/gcloud
-  id: 'delete'
+  id: 'delete1'
   entrypoint: 'bash'
   args:
   - '-c'
@@ -32,7 +32,7 @@ steps:
     gcloud compute snapshots delete snapshot-disk-old
 
 - name: gcr.io/cloud-builders/gcloud
-  id: 'create'
+  id: 'create1'
   entrypoint: 'bash'
   args:
   - '-c'
