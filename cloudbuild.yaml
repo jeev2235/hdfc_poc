@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/cloud-builders/gcloud
-  id: 'delete'
+  id: 'delete old'
   entrypoint: 'bash'
   args:
   - '-c'
@@ -12,7 +12,7 @@ steps:
     # timeout: 200s
 
 - name: gcr.io/cloud-builders/gcloud
-  id: 'create'
+  id: 'create current'
   entrypoint: 'bash'
   args:
   - '-c'
@@ -28,7 +28,7 @@ steps:
      gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
 
 - name: gcr.io/cloud-builders/gcloud
-  id: 'delete1'
+  id: 'delete previous'
   entrypoint: 'bash'
   args:
   - '-c'
@@ -36,7 +36,7 @@ steps:
     gcloud compute snapshots delete snapshot-disk
 
 - name: gcr.io/cloud-builders/gcloud
-  id: 'create1'
+  id: 'create latest'
   entrypoint: 'bash'
   args:
   - '-c'
