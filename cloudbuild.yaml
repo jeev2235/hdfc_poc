@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/cloud-builders/gcloud
-  id: 'delete old'
+  id: 'delete previous to previous'
   entrypoint: 'bash'
   args:
   - '-c'
