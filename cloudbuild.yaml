@@ -7,10 +7,6 @@ steps:
   - |
     gcloud compute snapshots delete snapshot-disk-old
 
-    #- name: 'ubuntu'
-    # args: ['sleep', '60']
-    # timeout: 200s
-
 - name: gcr.io/cloud-builders/gcloud
   id: 'create current'
   entrypoint: 'bash'
