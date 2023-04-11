@@ -5,4 +5,12 @@ steps:
   args:
   - '-c'
   - |
-    git pull https://github.com/jeev2235/hdfc_poc.git 
+    git config pull.ff only
+
+- name: gcr.io/cloud-builders/gcloud
+  id: 'git pull'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    git pull https://github.com/jeev2235/hdfc_poc.git
