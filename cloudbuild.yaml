@@ -1,48 +1,8 @@
 steps:
 - name: gcr.io/cloud-builders/gcloud
-  id: 'delete previous to previous'
+  id: 'git pull'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    gcloud compute snapshots delete snapshot-disk-old
-
-- name: gcr.io/cloud-builders/gcloud
-  id: 'create current'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    gcloud compute snapshots create snapshot-disk-old --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
-
-- name: gcr.io/cloud-builders/gcloud
-  id: 'copy'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-     gcloud compute scp * main-instance:D:\Jeevan --zone asia-south1-c
-
-- name: gcr.io/cloud-builders/gcloud
-  id: 'delete previous'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    gcloud compute snapshots delete snapshot-disk
-
-- name: gcr.io/cloud-builders/gcloud
-  id: 'create latest'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    gcloud compute snapshots create snapshot-disk --project=hdfcergo-ci-cd-poc --source-disk=disk-1 --source-disk-zone=asia-south1-c --storage-location=asia-south1
-
-- name: gcr.io/cloud-builders/gcloud
-  id: 'replace'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    gcloud compute instance-groups managed rolling-action replace ig-main --max-surge=2 --max-unavailable=2 --replacement-method='substitute' --zone=asia-south1-c
+    git pull https://github.com/jeev2235/hdfc_poc.git 
