@@ -1,16 +1,8 @@
 steps:
-- name: gcr.io/cloud-builders/gcloud
-  id: 'git pull'
+- name: 'gcr.io/cloud-builders/git'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    git config pull.ff only
-
-- name: gcr.io/cloud-builders/gcloud
-  id: 'git pull main'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
+    git config --global credential.helper gcloud.sh
     git pull https://github.com/jeev2235/hdfc_poc.git
