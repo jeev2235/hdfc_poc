@@ -8,7 +8,7 @@ steps:
     git config pull.ff only
 
 - name: gcr.io/cloud-builders/gcloud
-  id: 'git pull'
+  id: 'git pull main'
   entrypoint: 'bash'
   args:
   - '-c'
